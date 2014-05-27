@@ -2,9 +2,12 @@
 
 <div id="map-canvas" style="width: 50%; height: 50%"></div>
 
-<!-- Geocoding is a time and resource intensive task. Whenever possible, pre-geocode known addresses (using the Geocoding API described here or another geocoding service), and store your results in a temporary cache of your own design. -->
-
-
-
-<div><%= @status["error_message"] %>
+<div><% @results.each do |result| %>
+	admin0: <%= result['admin0'] %><br/>
+	admin1: <%= result['admin1'] %><br/>
+	admin2: <%= result['admin2'] %><br/>
+	admin3: <%= result['admin3'] %><br/>
+	search: <%= result['search'] %><br/>
+	<br/><br/>
 </div>
+<% end %>
