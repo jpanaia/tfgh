@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Force for Global Health</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+      <!-- <script type ="text/javascript" src="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&sensor=false&key=AIzaSyAKqlF67qdx09dtv7BpiEh12zv7ohlt5xQ">
+      </script> -->
+
+	  <script type="text/javascript"
+	      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKqlF67qdx09dtv7BpiEh12zv7ohlt5xQ&sensor=false">
+	  </script>
+	  <script>
+	  var geo = new google.maps.Geocoder;
+geo.geocode({'address':address},function(results, status){
+    if (status == google.maps.GeocoderStatus.OK) {              
+        var myLatLng = results[0].geometry.location;
+
+        // Add some code to work with myLatLng              
+
+    } else {
+        alert("Geocode was not successful for the following reason: " + status);
+    }
+});
+	</script>
+	   
+	   <script type="text/javascript">
+	      function initialize() {
+	        var mapOptions = {
+	          center: new google.maps.LatLng(-34.397, 150.644),
+	          zoom: 8
+	        };
+	        var map = new google.maps.Map(document.getElementById("map-canvas"),
+	            mapOptions);
+	      }
+	      google.maps.event.addDomListener(window, 'load', initialize);
+   	 </script>
+  <%= csrf_meta_tags %>
+</head>
+<body onload="initialize()">
+
+<%= yield %>
+
+</body>
+</html>
